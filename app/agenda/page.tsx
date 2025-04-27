@@ -1,8 +1,11 @@
-export default function AgendaPage() {
+import React from 'react'
+
+function page() {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Agenda</h1>
-      <p>Página de gestión de agenda</p>
+      <p>GEstion de cliente</p>
     </div>
   )
 }
+
+export default page

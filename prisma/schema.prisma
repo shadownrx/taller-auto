@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clientes {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model vehiculos {
+  patente   String   @id @default(cuid())
+  marca     String
+  modelo    String
+  anio      Int
+  createdAt DateTime @default(now())
+}
+
+
+model stock {
+  id          String   @id @default(cuid())
+  pieza       String
+  vehiculo    String
+  cantidad    Int
+  casillero   String
+  createdAt   DateTime @default(now())
+}
+
+model Proveedores {
+  id        String   @id @default(cuid())
+  nombre    String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model salida_stock {
+  id          String   @id @default(cuid())
+  pieza       String
+  vehiculo    String
+  cantidad    Int
+  casillero   String
+  createdAt   DateTime @default(now())
+}
+
+model Usuarios {
+  id        String   @id @default(cuid())
+  nombre    String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  rol       Boolean
+}
+
+model ingresos_vehiculos_mecanico {
+  patente   String   @id @default(cuid())
+  marca     String
+  modelo    String
+  anio      Int
+  createdAt DateTime @default(now())
+}
+
+model egresos_vehiculos_mecanico {
+  patente   String   @id @default(cuid())
+  marca     String
+  modelo    String
+  anio      Int
+  createdAt DateTime @default(now())
+}
+
+model ingresos_caja {
+  id              String   @id @default(cuid())
+  fecha            DateTime @default(now())
+  monto           Float
+  forma_de_pago   String
+  Servicio        String
+  createdAt       DateTime @default(now())
+}
+
+model egresos_caja {
+  id              String   @id @default(cuid())
+  fecha            DateTime @default(now())
+  monto           Float
+  forma_de_pago   String
+  Servicio        String
+  createdAt       DateTime @default(now())
+}
+
+model reservas {
+  id          String   @id @default(cuid())
+  nombre      String
+  email       String
+  telefono    String
+  vehiculo    String
+  fecha       DateTime @default(now())
+  createdAt   DateTime @default(now())
+  matricula   String
+  monto       Float
+}
+
+model agenda {
+  id          String   @id @default(cuid())
+  nombre      String
+  email       String
+  telefono    String
+  vehiculo    String
+  fecha       DateTime @default(now())
+  createdAt   DateTime @default(now())
+  matricula   String
+  monto       Float
+}
+
+model ingreso_lavado {
+  patente   String   @id @default(cuid())
+  marca     String
+  modelo    String
+  anio      Int
+  createdAt DateTime @default(now())
+}
+
+model egreso_lavado {
+  patente   String   @id @default(cuid())
+  marca     String
+  modelo    String
+  anio      Int
+  createdAt DateTime @default(now())
+}
